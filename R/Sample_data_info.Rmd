@@ -1,0 +1,77 @@
+---
+title: "Sample Datasets Info Page"
+author: Sean Conway
+date: 8/17/2021
+output: pdf_document
+---
+
+```{r setup, include=FALSE, message=F}
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+library(readxl)
+library(tidyverse)
+library(here)
+```
+  
+## Datasets
+  
+This document summarizes the datasets that have been collected for use in DACSS 601 for the August 2021 session. All files can be found in the `_data` folder on the course blog. Note that some of these datasets require significant wrangling/cleaning. Also note that any .xls/.xlsx files may have multiple sheets, so it will be helpful to open these files in a spreadsheet software first, to examine the file you are reading in.
+  
+Also note that there are both **basic** and **advanced** versions of the datasets. The basic versions are clean and can be read into `R` fairly easily. These are great to practice on if you are new to `R` or need a refresher on importing data. For those who are more advanced `R` programmers, the advanced datasets will require significant work to be imported into `R` and tidied. 
+  
+## Hotel Bookings
+  
+This dataset contains hotel bookings from 2015-2017. Each row is an individual hotel booking. This dataset is **only available as an advanced dataset**. The file is named `hotel_bookings.csv`. Because the file format is .csv, we can use the function `read_csv()` from the `readr` package to read in the data to `R`.
+  
+```{r message=FALSE}
+hotels <- read_csv(here("R","data","hotel_bookings.csv"))
+hotels
+```
+  
+**Source: https://www.kaggle.com/jessemostipak/hotel-booking-demand**
+  
+Also see the link for a detailed key. 
+  
+## 2019 New York City Air BnB Bookings
+
+This dataset contains Air Bnb bookings from 2019 in New York City. Each row contains an individual Air Bnb listing, and each column contains information about it (e.g., number of reviews per month, price, data of last review). This dataset is **only available as an advanced dataset**. The file is named `AB_NYC_2019.csv`. Because the file format is .csv, we can use the function `read_csv()` from the `readr` package to read in the data to `R`.
+  
+```{r message=F}
+air_bnb <- read_csv(here("R","data","AB_NYC_2019.csv"))
+air_bnb
+glimpse(air_bnb)
+```
+  
+**Source: https://www.kaggle.com/dgomonov/new-york-city-airbnb-open-data** 
+  
+Also see the link for a detailed key. 
+  
+## 2017 Austrailian Marriage Law 
+  
+Data on public opinion of a proposed same sex marriage law in Australia in 2017. The **basic** version of this dataset can be found as `australian_marriage_tidy.csv` and `australian_marriage_tidy.xlsx`. The advanced version is `australian_marriage_law_postal_survey_2017_-_response_final.xlsx`, so we can use the function `read_excel()` to read in the data. However, this advanced dataset was designed as an Excel spreadsheet, and so will take some extra work to be read into `R`.
+  
+**Source: https://www.abs.gov.au/ausstats/abs@.nsf/mf/1800.0**
+  
+## DOD Active Duty Marital Status
+  
+Count data on various demographic charasterics, notably marital status and child status, by pay grade, for multiple branches of the military (as well as DOD as a whole). This dataset is **only available as an advanced dataset**. This file is called `ActiveDuty_MaritalStatus.xls`.  However, this dataset was designed as an Excel spreadsheet, and so will take some extra work to be read into `R`.
+  
+**Source: https://catalog.data.gov/dataset/active-duty-marital-status/resource/638cad03-b16c-48ac-8346-f858ff89d202**
+  
+## Public School Characteristics 2017-2018
+  
+Data on characteristics of every US public school from 2017-2018. File is called `Public_School_Characteristics_2017-18.csv`. Note that this file is fairly large, and if you aren't careful, you may encounter parsing errors when reading in the file.
+
+**Source: https://catalog.data.gov/dataset/public-school-characteristics-2017-18**
+  
+## 2012 US Railroad Employment.
+  
+Data breaking down US railroad employment numbers in 2012 by state and county. The **basic** versions are divided into county data and state data. The **basic** files are `railroad_2012_clean_county.csv` and `railroad_2012_clean_county.xlsx`, and `railroad_2012_clean_state.csv` and `railroad_2012_clean_state.xlsx`.  The **advanced** file is `StateCounty2012.xls`.
+  
+**Source: https://catalog.data.gov/dataset/total-railroad-employment-by-state-and-county-2012/resource/5a0b2831-23b9-4ce9-82e9-87a7d8f2c5d8**  
+  
+## Organic Egg & Poultry Prices
+  
+Data on organic egg & poultry prices in the US from 2004-2013. The basic versions of the files are `poultry_tidy.csv` and `poultry_tidy.xlsx`, as well as `eggs_tidy.csv` and `eggs_tidy.xlsx`. The **advanced** file is `organiceggpoultry.xls`. 
+  
+**Source: https://www.ers.usda.gov/data-products/organic-prices.aspx**  
