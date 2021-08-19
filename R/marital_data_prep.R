@@ -66,20 +66,24 @@ col_names <- c("", "pay_grade","single_withoutchildren_male",
 # defining our sheets
 sheets <- excel_sheets(here("R","data","ActiveDuty_MaritalStatus.xls"))
 
-# purrr-ing through the sheets. filtering, selecting, renaming, etc.
-data <- purrr::map(sheets,~read_excel(here("R","data","ActiveDuty_MaritalStatus.xls"),
-                              sheet = .x,
-                              trim_ws = TRUE,
-                              guess_max = 37,
-                              col_names = col_names,
-                              skip=9) %>% 
-  mutate("branch"=.x) %>%
-  filter(str_detect(pay_grade, regex("total",ignore_case = TRUE),negate = T)) %>%
-  select(2:last_col()) %>%
-  rename_with(.cols=2:last_col(), ~str_replace_all(.x, "_"," ")) %>%
-  separate(col=pay_grade, into=c("enlisted","pay_grade"),
-           sep="-"))
+read_mar_sheets <- function(sheet){
+  read_excel(here("R","data","ActiveDuty_MaritalStatus.xls"),
+             sheet = sheet,
+             trim_ws = TRUE,
+             guess_max = 37,
+             col_names = col_names,
+             skip=9) %>% 
+    mutate("branch"=sheet) %>%
+    filter(str_detect(pay_grade, regex("total",ignore_case = TRUE),negate = T)) %>%
+    select(2:last_col()) %>%
+    rename_with(.cols=2:last_col(), ~str_replace_all(.x, "_"," ")) %>%
+    separate(col=pay_grade, into=c("enlisted","pay_grade"),
+             sep="-")
+}
 
+# purrr-ing through the sheets. filtering, selecting, renaming, etc.
+data <- purrr::map(sheets, read_mar_sheets)
+                   
 # if it worked, this should look pretty
 data[[1]]
 
@@ -91,4 +95,4 @@ marital_tidy_all <- data %>%
 
 # saving data 
 #map2(.x=sheets,.y=data, ~write_csv(.y, file=here("R","data_cleaned",paste0(tolower(.x), "_cleaned.csv"))))
-
+#write_csv(marital_tidy_all, here("R","data_cleaned","marital_tidy_all.csv"))
