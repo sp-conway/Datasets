@@ -41,3 +41,5 @@ aus_mar_tidy <- aus_mar %>%
 
 # save data
 #save(aus_mar_tidy, file=here("R","data_cleaned","australian_marriage_tidy.RData"))
+#write_csv(aus_mar_tidy, file=here("R","data_cleaned","australian_marriage_tidy.csv"))
+#xlsx::write.xlsx(as.data.frame(aus_mar_tidy),row.names=FALSE, file = here("R","data_cleaned","australian_marriage_tidy.xlsx"))

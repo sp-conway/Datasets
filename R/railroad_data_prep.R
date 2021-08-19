@@ -23,3 +23,8 @@ railroad_2012_clean_state <- railroad_2012_clean_county %>%
 
 #save(railroad_2012_clean_county, file=here("R","data_cleaned","railroad_2012_county.RData"))
 #save(railroad_2012_clean_state, file=here("R","data_cleaned","railroad_2012_state.RData"))
+#write_csv(railroad_2012_clean_county, file=here("R","data_cleaned","railroad_2012_clean_county_tidy.csv"))
+#xlsx::write.xlsx(as.data.frame(railroad_2012_clean_county),row.names=FALSE, file = here("R","data_cleaned","railroad_2012_clean_county.xlsx"))
+#write_csv(railroad_2012_clean_state, file=here("R","data_cleaned","railroad_2012_clean_state.csv"))
+#xlsx::write.xlsx(as.data.frame(railroad_2012_clean_state),row.names=FALSE, file = here("R","data_cleaned","railroad_2012_clean_state.xlsx"))
+

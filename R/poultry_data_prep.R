@@ -76,4 +76,7 @@ poultry_tidy
 
 # Saving data
 #save(poultry_tidy, file = here("R","data_cleaned","poultry_tidy.RData"))
+#write_csv(poultry_tidy, file=here("R","data_cleaned","poultry_tidy.csv"))
+#xlsx::write.xlsx(as.data.frame(poultry_tidy),row.names=FALSE, file = here("R","data_cleaned","poultry_tidy.xlsx"))
+
     

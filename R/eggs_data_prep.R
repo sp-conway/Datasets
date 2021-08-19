@@ -16,7 +16,11 @@ eggs <- read_excel(here("R","data","organiceggpoultry.xls"),
 year <- 2004:2013
 n <- 12
 year_var <- map2(year, n, rep) %>% 
-  unlist()
+  unlist() 
+
+# Or base R solution 
+# year_var_base <- sort(rep(year, n))
+# year_var == year_var_base returns all TRUE
 
 eggs_1 <- eggs %>% 
   rename(
@@ -34,3 +38,5 @@ eggs_1 <- eggs %>%
 
 # writing data to file
 #write_csv(eggs_1, file=here("R","data_cleaned","eggs_2004_2013.csv"))
+#xlsx::write.xlsx(as.data.frame(eggs_1),row.names=FALSE, file = here("R","data_cleaned","eggs_tidy.xlsx"))
+
