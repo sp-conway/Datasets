@@ -106,7 +106,7 @@ As we saw, there are multiple sheets in `ActiveDuty_MaritalStatus.xls`. We will 
 First, we define the column names we want. Note that this is the same as above, but we need to include am empty string, since we will be forced to read in the "first" column (which is empty).
   
 ```{r}
-col_names_all <- c("", "pay_grade","single_withoutchildren_male",
+col_names_all <- c(" ", "pay_grade","single_withoutchildren_male",
               "single_withoutchildren_female",
               "single_withoutchildren_total",
               "single_withchildren_male",
@@ -134,7 +134,7 @@ Next, is the bulk of our workload. We write a custom function that will read in 
   
 The function first reads in the data, using `read_excel()`. Note that we specify the `path `from the `file_path` variable I created above. The `sheet` is specified by the user as `sheet_name`. We also ask `read_excel()` to trim whitespace (`trim_ws=TRUE`). The `col_names` are defined with `col_names_all` from above, and `skip=9` tells `read_excel()` to skip the first 9 rows (this number comes from a visual inspection of the Excel file).
   
-After the sheet is read in, we use the pipe (`%>%`) to continue perfoming operations on it. We create a column `branch`, equal to the value of `sheet_name`. Then, we use `select(2:last_col())` to remove the first column from the data (recall that the first column is blank). We then use `select(c(pay_grade, !contains("total")))` to remove any columns with the word "total" in their name.
+After the sheet is read in, we use the pipe (`%>%`) to continue perfoming operations on it. We create a column `branch`, equal to the value of `sheet_name`. Then, we use `select(-c(` `))` to remove the first column from the data (recall that the first column is blank). We then use `select(c(pay_grade, !contains("total")))` to remove any columns with the word "total" in their name.
   
 `filter(str_detect(pay_grade, regex("total",ignore_case = TRUE),negate = T))` removes the word "total" from the column `pay_grade`.
   
@@ -150,7 +150,7 @@ read_mar_sheets <- function(sheet_name){
              col_names = col_names_all,
              skip=9) %>% 
     mutate("branch"=sheet_name) %>%
-    select(2:last_col()) %>% # immediately remove out blank column
+    select(-c(` `)) %>% # immediately remove out blank column
     select(c(pay_grade,!contains("total"))) %>% # remove columns with the word total
     filter(str_detect(pay_grade, regex("total",ignore_case = TRUE),negate = T)) %>%
     pivot_longer(cols = !contains(c("pay_grade","branch")), # these columns can remain as is
