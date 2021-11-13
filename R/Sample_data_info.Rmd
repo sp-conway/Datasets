@@ -24,7 +24,7 @@ Also note that there are both **basic** and **advanced** versions of the dataset
 This dataset contains hotel bookings from 2015-2017. Each row is an individual hotel booking. This dataset is **only available as an advanced dataset**. The file is named `hotel_bookings.csv`. Because the file format is .csv, we can use the function `read_csv()` from the `readr` package to read in the data to `R`.
   
 ```{r message=FALSE}
-hotels <- read_csv(here("R","data","hotel_bookings.csv"))
+hotels <- read_csv(here("data","hotel_bookings.csv"))
 hotels
 ```
   
@@ -37,7 +37,7 @@ Also see the link for a detailed key.
 This dataset contains Air Bnb bookings from 2019 in New York City. Each row contains an individual Air Bnb listing, and each column contains information about it (e.g., number of reviews per month, price, data of last review). This dataset is **only available as an advanced dataset**. The file is named `AB_NYC_2019.csv`. Because the file format is .csv, we can use the function `read_csv()` from the `readr` package to read in the data to `R`.
   
 ```{r message=F}
-air_bnb <- read_csv(here("R","data","AB_NYC_2019.csv"))
+air_bnb <- read_csv(here("data","AB_NYC_2019.csv"))
 air_bnb
 glimpse(air_bnb)
 ```

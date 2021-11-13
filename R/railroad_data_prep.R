@@ -9,7 +9,7 @@ library(tidyverse)
 library(here)
 library(readxl)
 
-railroad_2012 <- read_excel(here("R","data","StateCounty2012.xls"),
+railroad_2012 <- read_excel(here("data","StateCounty2012.xls"),
                    skip = 3,trim_ws = T,n_max = 2986)
 
 railroad_2012_clean_county <- railroad_2012 %>%
@@ -21,10 +21,10 @@ railroad_2012_clean_state <- railroad_2012_clean_county %>%
   group_by(state) %>%
   summarise(total_employees=sum(total_employees,na.rm = T))
 
-#save(railroad_2012_clean_county, file=here("R","data_cleaned","railroad_2012_county.RData"))
-#save(railroad_2012_clean_state, file=here("R","data_cleaned","railroad_2012_state.RData"))
-#write_csv(railroad_2012_clean_county, file=here("R","data_cleaned","railroad_2012_clean_county_tidy.csv"))
-#xlsx::write.xlsx(as.data.frame(railroad_2012_clean_county),row.names=FALSE, file = here("R","data_cleaned","railroad_2012_clean_county.xlsx"))
-#write_csv(railroad_2012_clean_state, file=here("R","data_cleaned","railroad_2012_clean_state.csv"))
-#xlsx::write.xlsx(as.data.frame(railroad_2012_clean_state),row.names=FALSE, file = here("R","data_cleaned","railroad_2012_clean_state.xlsx"))
+# save(railroad_2012_clean_county, file=here("data_cleaned","railroad_2012_county.RData"))
+# save(railroad_2012_clean_state, file=here("data_cleaned","railroad_2012_state.RData"))
+# write_csv(railroad_2012_clean_county, file=here("data_cleaned","railroad_2012_clean_county_tidy.csv"))
+# xlsx::write.xlsx(as.data.frame(railroad_2012_clean_county),row.names=FALSE, file = here("data_cleaned","railroad_2012_clean_county.xlsx"))
+# write_csv(railroad_2012_clean_state, file=here("data_cleaned","railroad_2012_clean_state.csv"))
+# xlsx::write.xlsx(as.data.frame(railroad_2012_clean_state),row.names=FALSE, file = here("data_cleaned","railroad_2012_clean_state.xlsx"))
 

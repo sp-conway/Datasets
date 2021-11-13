@@ -9,7 +9,7 @@ library(here)
 library(readxl)
 
 # reading in data
-eggs <- read_excel(here("R","data","organiceggpoultry.xls"),
+eggs <- read_excel(here("data","organiceggpoultry.xls"),
                    sheet = 1, range = "B5:F125")
 
 # Data wrangling & cleaning
@@ -37,6 +37,6 @@ eggs_1 <- eggs %>%
   relocate(month, year, large_half_dozen, large_dozen, extra_large_half_dozen, extra_large_dozen)
 
 # writing data to file
-#write_csv(eggs_1, file=here("R","data_cleaned","eggs_2004_2013.csv"))
-#xlsx::write.xlsx(as.data.frame(eggs_1),row.names=FALSE, file = here("R","data_cleaned","eggs_tidy.xlsx"))
+#write_csv(eggs_1, file=here("data_cleaned","eggs_2004_2013.csv"))
+#xlsx::write.xlsx(as.data.frame(eggs_1),row.names=FALSE, file = here("data_cleaned","eggs_tidy.xlsx"))
 

@@ -22,7 +22,7 @@ The data are originally from the US Department of Agriculture. They contain info
 The specific data file we are working with, `eggs_2004_2013.csv`, is a .csv (comma-separated value) file containing a selected portion of data on the price per carton for organic products in the US for each month from 2004-2013.
   
 ```{r, echo=F, message=F}
-eggs <- read_csv(here("R","data_cleaned","eggs_2004_2013.csv"))
+eggs <- read_csv(here("data_cleaned","eggs_2004_2013.csv"))
 ```
   
 First, we need to read in the data, using `read_csv()` from the `readr` package (part of the `tidyverse`).

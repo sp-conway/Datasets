@@ -9,7 +9,7 @@ library(readxl)
 library(here)
 
 # Only reading in clear responses, and ignoring totals
-aus_mar <- read_excel(here("R","data","australian_marriage_law_postal_survey_2017_-_response_final.xls"),
+aus_mar <- read_excel(here("data","australian_marriage_law_postal_survey_2017_-_response_final.xls"),
                     sheet=2, range="A8:E15", 
                     col_names = c("territory","yes_num","yes_perc","no_num","no_perc"))
 aus_mar
@@ -40,6 +40,6 @@ aus_mar_tidy <- aus_mar %>%
               names_from = type, values_from = value)
 
 # save data
-#save(aus_mar_tidy, file=here("R","data_cleaned","australian_marriage_tidy.RData"))
-#write_csv(aus_mar_tidy, file=here("R","data_cleaned","australian_marriage_tidy.csv"))
-#xlsx::write.xlsx(as.data.frame(aus_mar_tidy),row.names=FALSE, file = here("R","data_cleaned","australian_marriage_tidy.xlsx"))
+# save(aus_mar_tidy, file=here("data_cleaned","australian_marriage_tidy.RData"))
+# write_csv(aus_mar_tidy, file=here("data_cleaned","australian_marriage_tidy.csv"))
+# xlsx::write.xlsx(as.data.frame(aus_mar_tidy),row.names=FALSE, file = here("data_cleaned","australian_marriage_tidy.xlsx"))

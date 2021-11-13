@@ -9,7 +9,7 @@ library(here)
 library(readxl)
 
 # file path 
-file_path <- here("R","data","ActiveDuty_MaritalStatus.xls")
+file_path <- here("data","ActiveDuty_MaritalStatus.xls")
 
 ### READING IN JUST FIRST SHEET ========
 marital_dod_1 <- read_excel(file_path,
@@ -95,5 +95,5 @@ marital_tidy_all <- data %>%
   bind_rows() 
 
 # saving data 
-#map2(.x=sheets,.y=data, ~write_csv(.y, file=here("R","data_cleaned",paste0(tolower(.x), "_cleaned.csv"))))
-#write_csv(marital_tidy_all, here("R","data_cleaned","marital_tidy_all.csv"))
+#map2(.x=sheets,.y=data, ~write_csv(.y, file=here("data_cleaned",paste0(tolower(.x), "_cleaned.csv"))))
+#write_csv(marital_tidy_all, here("data_cleaned","marital_tidy_all.csv"))
