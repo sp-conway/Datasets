@@ -45,7 +45,8 @@ col_types <- c("text",rep("numeric",12))
 #     so we need to replace "too few" with NA right away
 #   col_types = col_types - specifying the column types to be safe
 #   mutate(Year=.y) - creating a "Year" column using the input from .y (see year above)
-data_lists <- map2(.x=cell_ranges, .y=year, .f=~read_excel(path=here("data","organiceggpoultry.xls"),
+data_lists <- map2(.x=cell_ranges, .y=year, 
+                   .f=~read_excel(path=here("data","organiceggpoultry.xls"),
                   sheet = 3, range=.x, col_names = col_names, na="too few",col_types = col_types) %>%
               mutate(Year=.y)) 
 data_lists 
